@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-
-const api = axios.create({ baseURL: `${process.env.REACT_APP_API_URL}/api` });
-
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
-  if (token) config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
+import { api } from "../helper/axios";
 
 export default function CreatePurchaseOrder() {
   const [customers, setCustomers] = useState([]);
